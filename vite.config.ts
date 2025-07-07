@@ -17,8 +17,18 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  esbuild: {
+    jsx: 'automatic',
+    jsxImportSource: 'react',
+  },
   build: {
     assetsInlineLimit: 0,
+    rollupOptions: {
+      external: [],
+    },
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react/jsx-runtime'],
   },
   server: {
     port: 3000,
