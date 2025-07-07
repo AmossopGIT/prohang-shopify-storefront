@@ -143,7 +143,7 @@ export function Footer() {
         <div className="border-t border-white/10 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
             <p className="text-prohang-light-blue mb-4 md:mb-0">
-              © 2024 ProHang Washing Lines. All rights reserved.
+              © 2024 ProHang Washing Lines. All rights reserved. | Auto-deployed with Oxygen ⚡
             </p>
             <div className="flex space-x-6">
               <p className="text-prohang-light-blue text-sm">
