@@ -80,7 +80,7 @@ const mockProducts: ProductType[] = [
     priceRange: {
       minVariantPrice: {
         amount: '2750.00',
-        currencyCode: 'ZAR'
+          currencyCode: 'ZAR'
       }
     },
     featuredImage: {
@@ -106,7 +106,7 @@ const mockProducts: ProductType[] = [
     priceRange: {
       minVariantPrice: {
         amount: '149.00',
-        currencyCode: 'ZAR'
+          currencyCode: 'ZAR'
       }
     },
     featuredImage: {
@@ -126,9 +126,9 @@ const mockProducts: ProductType[] = [
 ];
 
 export async function loader({context}: LoaderFunctionArgs) {
-  return json({
-    products: mockProducts,
-  });
+    return json({
+      products: mockProducts,
+    });
 }
 
 export default function CollectionsAll() {
@@ -175,17 +175,17 @@ export default function CollectionsAll() {
         <div className="prohang-container text-center">
           <h1 className="prohang-heading-xl mb-4">Premium Washing Lines</h1>
           <p className="prohang-text-lead mb-8 max-w-3xl mx-auto">
-            Professional installation included • 2-year warranty • Made in South Africa
-          </p>
+              Professional installation included • 2-year warranty • Made in South Africa
+            </p>
           <div className="flex flex-wrap justify-center gap-4">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-              <span className="text-prohang-lime font-semibold">✓</span> Free Installation
-            </div>
+                <span className="text-prohang-lime font-semibold">✓</span> Free Installation
+              </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-              <span className="text-prohang-lime font-semibold">✓</span> 2-Year Warranty
-            </div>
+                <span className="text-prohang-lime font-semibold">✓</span> 2-Year Warranty
+              </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-              <span className="text-prohang-lime font-semibold">✓</span> South African Made
+                <span className="text-prohang-lime font-semibold">✓</span> South African Made
             </div>
           </div>
         </div>
@@ -195,27 +195,27 @@ export default function CollectionsAll() {
         <div className="prohang-container">
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
                 className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                  category.id === selectedCategory
-                    ? 'bg-prohang-navy text-white shadow-lg'
-                    : 'bg-white text-prohang-navy border border-prohang-navy hover:bg-prohang-navy hover:text-white'
-                }`}
-              >
-                {category.name} ({category.count})
-              </button>
-            ))}
-          </div>
+                category.id === selectedCategory
+                  ? 'bg-prohang-navy text-white shadow-lg'
+                  : 'bg-white text-prohang-navy border border-prohang-navy hover:bg-prohang-navy hover:text-white'
+              }`}
+            >
+              {category.name} ({category.count})
+            </button>
+          ))}
+        </div>
 
           {/* Products Grid */}
           <div className="prohang-product-grid">
             {filteredProducts.map((product) => {
-              const variant = product.variants.nodes[0];
-              
-              return (
+            const variant = product.variants.nodes[0];
+            
+            return (
                 <article 
                   key={product.id}
                   className="prohang-card p-6 text-center group hover:-translate-y-2 relative overflow-hidden"
@@ -246,8 +246,8 @@ export default function CollectionsAll() {
                       className="w-full h-full object-cover object-center"
                       loading="lazy"
                     />
-                  </div>
-                  
+                </div>
+                
                   {/* Product Info */}
                   <h3 className="prohang-heading-sm mb-2">{product.title}</h3>
                   
@@ -261,7 +261,7 @@ export default function CollectionsAll() {
                         <span className="text-lg text-gray-500 line-through">
                           R{parseInt(product.originalPrice)}
                         </span>
-                      )}
+                    )}
                     </div>
                   </div>
                   
@@ -285,20 +285,20 @@ export default function CollectionsAll() {
                         route="/cart"
                         inputs={{
                           lines: [{
-                            merchandiseId: variant.id,
-                            quantity: 1,
+                              merchandiseId: variant.id,
+                              quantity: 1,
                           }],
                         }}
                         action={CartForm.ACTIONS.LinesAdd}
                       >
                         {(fetcher) => (
-                          <button
-                            type="submit"
+                        <button 
+                          type="submit"
                             disabled={fetcher.state !== 'idle'}
                             className="prohang-btn-primary w-full"
-                          >
+                        >
                             {fetcher.state !== 'idle' ? 'Adding...' : 'Add to Cart'}
-                          </button>
+                        </button>
                         )}
                       </CartForm>
                       
@@ -322,21 +322,21 @@ export default function CollectionsAll() {
                     </div>
                   )}
                 </article>
-              );
-            })}
-          </div>
+            );
+          })}
+        </div>
 
-          {/* Empty State */}
-          {filteredProducts.length === 0 && (
-            <div className="text-center py-16">
+        {/* Empty State */}
+        {filteredProducts.length === 0 && (
+          <div className="text-center py-16">
               <h3 className="prohang-heading-md mb-4">No products found</h3>
               <p className="prohang-text-body mb-8">Try selecting a different category or check back later for new products.</p>
               <Link to="/contact" className="prohang-btn-primary">
-                Contact Us
-              </Link>
-            </div>
-          )}
-        </div>
+              Contact Us
+            </Link>
+          </div>
+        )}
+      </div>
       </main>
 
       {/* Why Choose ProHang Section */}
@@ -388,8 +388,8 @@ export default function CollectionsAll() {
             <Link to="/contact" className="prohang-btn-accent">
               Contact Us
             </Link>
-            <Link 
-              to="/book-installation" 
+            <Link
+              to="/book-installation"
               className="bg-transparent border-2 border-prohang-lime text-prohang-lime py-3 px-8 rounded-lg font-semibold hover:bg-prohang-lime hover:text-prohang-navy transition-all duration-200"
             >
               Free Quote

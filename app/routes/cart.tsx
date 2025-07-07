@@ -237,11 +237,11 @@ export async function action({request, context}: ActionFunctionArgs) {
     const cartIdMatch = cookies.match(/cartId=([^;]+)/);
     let cartId = cartIdMatch ? cartIdMatch[1] : null;
 
-    let result;
+  let result;
     let headers = new Headers();
 
-    switch (action) {
-      case CartForm.ACTIONS.LinesAdd:
+  switch (action) {
+    case CartForm.ACTIONS.LinesAdd:
         if (cartId) {
           // Add to existing cart
           if (storefront) {
@@ -396,9 +396,9 @@ export async function action({request, context}: ActionFunctionArgs) {
             headers.set('Set-Cookie', `cartId=${result.cart.id}; Path=/; HttpOnly; SameSite=Lax; Max-Age=2592000`);
           }
         }
-        break;
+      break;
 
-      case CartForm.ACTIONS.LinesUpdate:
+    case CartForm.ACTIONS.LinesUpdate:
         if (!cartId) throw new Error('No cart found');
         if (storefront) {
           result = await storefront.mutate(
@@ -472,9 +472,9 @@ export async function action({request, context}: ActionFunctionArgs) {
           );
           result = apiResult?.data?.cartLinesUpdate;
         }
-        break;
+      break;
 
-      case CartForm.ACTIONS.LinesRemove:
+    case CartForm.ACTIONS.LinesRemove:
         if (!cartId) throw new Error('No cart found');
         if (storefront) {
           result = await storefront.mutate(
@@ -548,26 +548,26 @@ export async function action({request, context}: ActionFunctionArgs) {
           );
           result = apiResult?.data?.cartLinesRemove;
         }
-        break;
+      break;
 
-      default:
+    default:
         throw new Error(`Unsupported action: ${action}`);
-    }
+  }
 
-    const redirectTo = formData.get('redirectTo') ?? null;
-    if (typeof redirectTo === 'string') {
-      headers.set('Location', redirectTo);
+  const redirectTo = formData.get('redirectTo') ?? null;
+  if (typeof redirectTo === 'string') {
+    headers.set('Location', redirectTo);
       return redirect(redirectTo, { headers });
-    }
+  }
 
-    return json(
-      {
+  return json(
+    {
         cart: result?.cart,
         errors: result?.userErrors || [],
-        analytics: {
+      analytics: {
           cartId: result?.cart?.id,
-        },
       },
+    },
       { headers }
     );
   } catch (error) {
@@ -578,7 +578,7 @@ export async function action({request, context}: ActionFunctionArgs) {
         errors: [{ field: 'general', message: error instanceof Error ? error.message : 'An error occurred' }],
       },
       { status: 500 }
-    );
+  );
   }
 }
 
