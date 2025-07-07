@@ -1,0 +1,221 @@
+/* ProHang Brand Fonts - Loaded from fonts.css */
+/* No external font imports needed - using local woff2 files */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* ProHang Custom Styles */
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Aktiv Grotesk', 'Inter', system-ui, -apple-system, sans-serif; /* Primary brand font */
+  line-height: 1.6;
+  color: #0A4369; /* ProHang Dark Navy for body text */
+}
+
+/* ProHang Component Styles */
+.prohang-btn-primary {
+  @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-prohang-navy hover:bg-prohang-navy/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-prohang-navy transition-all duration-200 shadow-prohang;
+}
+
+.prohang-btn-secondary {
+  @apply inline-flex items-center px-6 py-3 border-2 border-prohang-navy text-base font-medium rounded-lg text-prohang-navy bg-white hover:bg-prohang-navy hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-prohang-navy transition-all duration-200;
+}
+
+.prohang-btn-accent {
+  @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-prohang-lime hover:bg-prohang-lime/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-prohang-lime transition-all duration-200;
+}
+
+.prohang-card {
+  @apply bg-white rounded-xl shadow-lg hover:shadow-prohang-lg transition-all duration-300 border border-gray-100;
+}
+
+.prohang-gradient {
+  background: linear-gradient(135deg, #3D85C6 0%, #A6D3F1 100%);
+}
+
+.prohang-gradient-accent {
+  background: linear-gradient(135deg, #BAD655 0%, #A6D3F1 100%);
+}
+
+/* Form Styles */
+.prohang-input {
+  @apply block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-prohang-navy focus:border-prohang-navy transition-colors duration-200;
+}
+
+.prohang-select {
+  @apply block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-prohang-navy focus:border-prohang-navy transition-colors duration-200 bg-white;
+}
+
+.prohang-textarea {
+  @apply block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-prohang-navy focus:border-prohang-navy transition-colors duration-200;
+  resize: vertical;
+}
+
+/* Navigation Styles */
+.prohang-nav-link {
+  @apply text-gray-700 hover:text-prohang-navy font-medium transition-colors duration-200 relative;
+}
+
+.prohang-nav-link.active {
+  @apply text-prohang-navy;
+}
+
+.prohang-nav-link.active::after {
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-prohang-navy;
+  content: '';
+}
+
+/* Section Styles */
+.prohang-section {
+  @apply py-16 lg:py-24;
+}
+
+.prohang-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* ProHang Typography - Brand Guidelines Implementation */
+/* 
+  Headings: DIN Next LT Pro Bold (Primary brand font for headings)
+  Sub Headings: Aktiv Grotesk Bold (Brand font for sub headings)  
+  Body Text: Aktiv Grotesk Regular (Primary brand font for body)
+*/
+
+/* Main Headings (H1, H2) - DIN Next LT Pro */
+.prohang-heading-xl {
+  font-family: 'DIN Next LT Pro', 'Roboto Condensed', system-ui, -apple-system, sans-serif;
+  @apply text-4xl lg:text-6xl font-bold leading-tight tracking-tight;
+  color: #0A4369; /* ProHang Dark Navy for headings */
+}
+
+.prohang-heading-lg {
+  font-family: 'DIN Next LT Pro', 'Roboto Condensed', system-ui, -apple-system, sans-serif;
+  @apply text-3xl lg:text-4xl font-bold leading-tight tracking-tight;
+  color: #0A4369; /* ProHang Dark Navy for headings */
+}
+
+/* Sub Headings (H3, H4) - Aktiv Grotesk Bold */
+.prohang-heading-md {
+  font-family: 'Aktiv Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  @apply text-2xl lg:text-3xl font-bold leading-tight;
+  color: #0A4369; /* ProHang Dark Navy for headings */
+}
+
+.prohang-heading-sm {
+  font-family: 'Aktiv Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  @apply text-xl lg:text-2xl font-bold leading-tight;
+  color: #0A4369; /* ProHang Dark Navy for headings */
+}
+
+/* Body Text - Aktiv Grotesk Regular */
+.prohang-text-lead {
+  font-family: 'Aktiv Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  @apply text-lg lg:text-xl leading-relaxed font-normal;
+  color: #3D85C6; /* ProHang Navy for lead text */
+}
+
+.prohang-text-body {
+  font-family: 'Aktiv Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  @apply text-base leading-relaxed font-normal;
+  color: #0A4369; /* ProHang Dark Navy for body text */
+}
+
+.prohang-text-small {
+  font-family: 'Aktiv Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  @apply text-sm leading-relaxed font-normal;
+  color: #3D85C6; /* ProHang Navy for small text */
+}
+
+/* Feature Icons */
+.prohang-feature-icon {
+  @apply w-12 h-12 bg-prohang-light-blue rounded-lg flex items-center justify-center text-prohang-navy text-xl;
+}
+
+/* Hero Section */
+.prohang-hero {
+  background: linear-gradient(135deg, #3D85C6 0%, #A6D3F1 50%, #BAD655 100%);
+}
+
+/* Loading States */
+.prohang-loading {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+/* Responsive Video */
+.prohang-video-container {
+  @apply relative w-full h-0 pb-[56.25%] overflow-hidden rounded-lg;
+}
+
+.prohang-video-container iframe {
+  @apply absolute top-0 left-0 w-full h-full;
+}
+
+/* Product Grid */
+.prohang-product-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* Service Areas */
+.prohang-service-area {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-prohang-light-blue text-prohang-navy;
+}
+
+/* Installation Process */
+.prohang-process-step {
+  @apply relative flex flex-col items-center text-center;
+}
+
+.prohang-process-step::after {
+  @apply absolute top-6 left-full w-full h-0.5 bg-prohang-light-blue hidden lg:block;
+  content: '';
+  z-index: -1;
+}
+
+.prohang-process-step:last-child::after {
+  @apply hidden;
+}
+
+/* Testimonials */
+.prohang-testimonial {
+  @apply bg-white p-6 rounded-xl shadow-lg border border-gray-100;
+}
+
+/* Footer */
+.prohang-footer {
+  @apply bg-gray-900 text-white;
+}
+
+.prohang-footer-link {
+  @apply text-gray-300 hover:text-white transition-colors duration-200;
+}
+
+/* Utilities */
+.prohang-shadow {
+  box-shadow: 0 4px 14px 0 rgba(61, 133, 198, 0.15);
+}
+
+.prohang-shadow-lg {
+  box-shadow: 0 10px 25px 0 rgba(61, 133, 198, 0.2);
+}
+
+/* South African Flag Colors for special elements */
+.sa-flag-accent {
+  background: linear-gradient(90deg, #007749 33%, #FFB612 33%, #FFB612 66%, #DE3831 66%);
+}
+
+/* Responsive breakpoints helper */
+@media (max-width: 640px) {
+  .prohang-heading-xl {
+    @apply text-3xl;
+  }
+  
+  .prohang-heading-lg {
+    @apply text-2xl;
+  }
+} 

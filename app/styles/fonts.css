@@ -1,0 +1,81 @@
+/* ProHang Typography - Brand Guidelines Fonts */
+/* DIN Next LT Pro - For Headings */
+@font-face {
+  font-family: 'DIN Next LT Pro';
+  src: url('/fonts/DINNextLTPro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DIN Next LT Pro';
+  src: url('/fonts/DINNextLTPro-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DIN Next LT Pro';
+  src: url('/fonts/DINNextLTPro-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Aktiv Grotesk - For Body Text */
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('/fonts/AktivGrotesk-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('/fonts/AktivGrotesk-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('/fonts/AktivGrotesk-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('/fonts/AktivGrotesk-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback font loading */
+@font-face {
+  font-family: 'DIN Next LT Pro';
+  src: url('/fonts/DINNextLTPro-Regular.woff2') format('woff2'),
+       local('Roboto Condensed'),
+       local('Arial Narrow'),
+       local('Arial');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('/fonts/AktivGrotesk-Regular.woff2') format('woff2'),
+       local('Inter'),
+       local('Helvetica Neue'),
+       local('Arial');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+} 

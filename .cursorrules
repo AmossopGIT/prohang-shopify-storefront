@@ -1,0 +1,221 @@
+# PROHANG Shopify Hydrogen + Oxygen - Cursor Rules
+
+## 🛒 Project Context
+This is a **Hydrogen-based custom storefront** for PROHANG, a South African brand specializing in washing lines, pegs, and spare parts.
+
+**Key Requirements:**
+- Capture leads for installation inquiries
+- Support custom orders via Shopify checkout
+- Run fully on Shopify's backend with NO external database
+- Deploy via Shopify Oxygen
+- South African localization (ZAR, +27 phone, provinces)
+
+## ⚙️ Tech Stack & Architecture
+
+### Frontend
+- **Shopify Hydrogen** (React + Vite)
+- **TailwindCSS** + Custom Components
+- **TypeScript** (strict mode)
+- **Shopify Storefront API** for frontend data
+
+### Backend/Data
+- **Shopify Admin API** for leads + custom actions
+- **Shopify Customer & Metafields** for lead storage
+- **Draft Orders** with tags/notes for lead management
+- **NO external database** - everything in Shopify
+
+### Hosting & Deployment
+- **Shopify Oxygen** hosting
+- Environment: `.env` with Shopify credentials
+- Domain: `store.prohang.co.za` → CNAME to `oxygen.shopifycloud.com`
+
+## 📁 Expected File Structure
+```
+src/
+├── components/     # Reusable React components
+├── routes/        # Route files (/contact, /product, etc.)
+├── graphql/       # Storefront API queries
+├── lib/           # Utils (validation, date formatting)
+├── api.server.ts  # Admin API helper (OAuth-based)
+└── styles/        # Tailwind or custom CSS
+```
+
+## ✍️ Code Standards & Patterns
+
+### TypeScript Rules
+- Use **strict TypeScript** - never use `any`
+- Prefer strong typing and interfaces
+- Descriptive function/variable names
+- Always handle errors and API fallbacks
+
+### Shopify API Pattern
+```ts
+import { authenticate } from "~/shopify.server";
+
+export async function action({ request }: ActionFunctionArgs) {
+  const { admin } = await authenticate.admin(request);
+  
+  try {
+    const result = await admin.graphql(`
+      mutation {
+        draftOrderCreate(input: { ... }) {
+          draftOrder { id }
+        }
+      }
+    `);
+    return result;
+  } catch (error) {
+    return { error: "Failed to create lead" };
+  }
+}
+```
+
+### Component Structure
+- Modular, reusable components
+- Mobile-first, responsive design
+- Accessible components (keyboard nav, alt text)
+- Clear CTAs ("Request Free Install")
+
+## 🌍 South African Localization Requirements
+
+### Currency & Formatting
+- **Currency**: ZAR (South African Rand)
+- **Phone validation**: Must start with +27 or 0
+- **Timezone**: SAST (South Africa Standard Time)
+
+### Address Handling
+- SA province selector (9 provinces)
+- Proper postal code validation
+- City/suburb handling
+
+### Regional Features
+- Load shedding awareness for installation scheduling
+- Local business hours and holidays
+- Afrikaans/English language considerations
+
+## 📩 Lead Capture System
+
+### Form Requirements
+- Full name, email, phone (+27 validation)
+- Address (SA format with province selector)
+- Preferred install date/time
+- Property type (dropdown: House, Apartment, Townhouse, etc.)
+
+### Data Storage Options
+1. **Customer with metafields** approach
+2. **Draft Orders** with tags/notes
+3. Always include success confirmation
+
+## 🛡️ Security & Compliance
+
+### Security Best Practices
+- Sanitize all form inputs
+- Never expose Admin API secrets client-side
+- Use Shopify's built-in HTTPS hosting
+- Avoid unnecessary 3rd-party scripts
+
+### SA Legal Compliance
+- **POPIA**: Clear data capture statements
+- **CPA**: Visible product pricing and delivery terms
+- **ECTA**: Proper contact info + cancellation T&Cs
+
+## 🎨 UI/UX Guidelines
+
+### Design Principles
+- Mobile-first, responsive design
+- Clear visual hierarchy: product → benefits → installation
+- Smooth progress indicators for multi-step forms
+- Accessible color contrast and typography
+
+### User Flow
+1. Product browsing (Hydrogen storefront)
+2. Lead capture form
+3. Installation scheduling
+4. Custom order checkout (if applicable)
+
+## 🧪 Testing Approach
+
+### Testing Strategy
+- **Unit Tests**: Vitest
+- **Component Tests**: React Testing Library
+- **E2E Tests**: Playwright or Cypress (optional)
+- **Form Validation**: Test submission + API error fallback
+
+### Test Focus Areas
+- Form validation (especially SA phone/address)
+- API error handling
+- Mobile responsiveness
+- Accessibility compliance
+
+## 🚀 Development & Deployment
+
+### Development Commands
+```bash
+npm run dev          # Local development
+npm run build        # Production build
+shopify deploy       # Deploy to Oxygen
+```
+
+### Environment Variables
+```env
+VITE_PUBLIC_SHOPIFY_STORE_DOMAIN=prohang.myshopify.com
+VITE_PUBLIC_STOREFRONT_API_TOKEN=xxxxx
+# Never expose Admin API tokens client-side
+```
+
+## 📝 Code Generation Guidelines
+
+When generating code:
+
+1. **Always use TypeScript** with proper interfaces
+2. **Include error handling** for all API calls
+3. **Add form validation** for SA-specific formats
+4. **Implement responsive design** with TailwindCSS
+5. **Follow Hydrogen patterns** for routing and data fetching
+6. **Include accessibility attributes** (aria-labels, alt text)
+7. **Add loading states** and error boundaries
+8. **Use Shopify's built-in components** when available
+
+## 🎯 Key Features to Prioritize
+
+### Must-Have Features
+- Lead capture form with SA validation
+- Product catalog (washing lines, pegs, spare parts)
+- Installation inquiry system
+- Mobile-optimized checkout flow
+
+### Nice-to-Have Features
+- Load shedding schedule integration
+- Installation appointment booking
+- Customer account area
+- Order tracking
+
+## 🔍 Common Patterns to Follow
+
+### API Error Handling
+```ts
+try {
+  const result = await apiCall();
+  return { success: true, data: result };
+} catch (error) {
+  console.error('API Error:', error);
+  return { success: false, error: 'User-friendly error message' };
+}
+```
+
+### Form Validation (SA Phone)
+```ts
+const validateSAPhone = (phone: string): boolean => {
+  const saPhoneRegex = /^(\+27|0)[0-9]{9}$/;
+  return saPhoneRegex.test(phone.replace(/\s/g, ''));
+};
+```
+
+### Responsive Design Pattern
+```tsx
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {/* Mobile-first, responsive grid */}
+</div>
+```
+
+Remember: This is a **no-database** project - everything must work within Shopify's ecosystem! 
